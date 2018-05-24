@@ -24,3 +24,6 @@ Available notes $ 100,00; $ 50,00; $ 20,00; $ 10,00
 
     Entry: NULL
     Result: [Empty Set]
+    
+###Test the solution
+After run ```composer install``` in the program's root folder, you can run ```vendor/bin/phpunit``` to test it.
