@@ -49,9 +49,9 @@ class CashMachine
      * @throws NoteUnavailableException
      * @throws \InvalidArgumentException
      */
-    public function setNotes(float ...$notes) : void
+    public function setNotes(float ...$notes): void
     {
-        if($notes == null) {
+        if ($notes == null) {
             $notes = self::DEFAULT_NOTES;
         }
 
@@ -79,9 +79,9 @@ class CashMachine
     {
         $set = [];
         $tempAmount = $this->entry;
-        foreach ($this->notes as $note){
+        foreach ($this->notes as $note) {
             $noteInCent = $this->convertAmountToCents($note);
-            if($tempAmount >= $noteInCent) {
+            if ($tempAmount >= $noteInCent) {
                 $set[] = $this->convertCentToAmount($noteInCent);
                 $times = floor($tempAmount / $noteInCent);
                 $decrease = $times * $noteInCent;
@@ -89,7 +89,7 @@ class CashMachine
             }
         }
 
-        if(empty($set)) {
+        if (empty($set)) {
             $set[] = self::EMPTY_SET_VALUE;
         }
 
@@ -99,9 +99,9 @@ class CashMachine
     /**
      * @param float $number
      */
-    protected function positiveNumberValidation(float $number = null) : void
+    protected function positiveNumberValidation(float $number = null): void
     {
-        if($number < 0)
+        if ($number < 0)
             throw new \InvalidArgumentException();
     }
 
@@ -109,10 +109,10 @@ class CashMachine
      * @param int $entry
      * @throws NoteUnavailableException
      */
-    protected function noteAvailableValidation(int $entry) : void
+    protected function noteAvailableValidation(int $entry): void
     {
         $smallestNote = $this->convertAmountToCents(end($this->notes));
-        if($entry % $smallestNote != 0) {
+        if ($entry % $smallestNote != 0) {
             throw new NoteUnavailableException();
         }
     }
@@ -121,16 +121,16 @@ class CashMachine
      * @param float $amount
      * @return int
      */
-    protected function convertAmountToCents(float $amount = null) : int
+    protected function convertAmountToCents(float $amount = null): int
     {
-        return round($amount,self::FLOAT_TO_INT_PRECISION) * self::AMOUNT_TO_CENT;
+        return round($amount, self::FLOAT_TO_INT_PRECISION) * self::AMOUNT_TO_CENT;
     }
 
     /**
      * @param int $cent
      * @return string
      */
-    protected function convertCentToAmount(int $cent) : string
+    protected function convertCentToAmount(int $cent): string
     {
         return number_format(
             ($cent / self::AMOUNT_TO_CENT),

@@ -83,8 +83,8 @@ final class CashMachineTest extends TestCase
     public function it_can_deliver_with_any_notes()
     {
         $CashMachine = new CashMachine(10);
-        $CashMachine->setNotes(9,1);
+        $CashMachine->setNotes(9, 1);
         $result = $CashMachine->withdraw();
-        $this->assertEquals(["9.00","1.00"], $result);
+        $this->assertEquals(["9.00", "1.00"], $result);
     }
 }
