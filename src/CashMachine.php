@@ -5,7 +5,7 @@ namespace Naszta;
 
 use Naszta\Exceptions\NoteUnavailableException;
 
-class CacheMachine
+class CashMachine
 {
     const AMOUNT_TO_CENT = 100;
     const FLOAT_TO_INT_PRECISION = 2;
