@@ -1,0 +1,23 @@
+{
+    "name": "naszta/cash_machine",
+    "description": "Develop a solution that simulate the delivery of notes when a client does a withdraw in a cash machine.",
+    "require-dev": {
+        "phpunit/phpunit": "^7.1"
+    },
+    "authors": [
+        {
+            "name": "dnaszta",
+            "email": "david.nasztanovics@stylersonline.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-xml": "*",
+        "respect/validation": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Naszta\\": "src/"
+        }
+    }
+}
