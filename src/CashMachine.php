@@ -5,6 +5,21 @@ namespace Naszta;
 
 use Naszta\Exceptions\NoteUnavailableException;
 
+/**
+ * Class CashMachine
+ *
+ * This class simulate the delivery of notes
+ * when a client does a withdraw in a cash machine.
+ * The basic requirements are the follow:
+ *      Always deliver the lowest number of possible notes;
+ *      It’s possible to get the amount requested with available notes;
+ *      The client balance is infinite;
+ *      Amount of notes is infinite;
+ *
+ * Usage example:
+ *      (new CashMachine(80))->setNotes(100,50,20,10)->withdraw();
+ * @package Naszta
+ */
 class CashMachine
 {
     const AMOUNT_TO_CENT = 100;
