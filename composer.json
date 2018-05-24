@@ -13,6 +13,7 @@
     "require": {
         "php": ">=7.2",
         "ext-xml": "*",
+        "ext-mbstring": "*",
         "respect/validation": "^1.1"
     },
     "autoload": {
