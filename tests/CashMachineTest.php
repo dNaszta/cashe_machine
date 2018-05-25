@@ -10,8 +10,8 @@ final class CashMachineTest extends TestCase
      */
     public function it_can_be_created()
     {
-        $CashMachine = new CashMachine();
-        $this->assertInstanceOf(CashMachine::class, $CashMachine);
+        $cashMachine = new CashMachine();
+        $this->assertInstanceOf(CashMachine::class, $cashMachine);
     }
 
     /**
@@ -19,8 +19,8 @@ final class CashMachineTest extends TestCase
      */
     public function it_can_set_entry()
     {
-        $CashMachine = new CashMachine(10);
-        $this->assertEquals("10.00", $CashMachine->getEntry());
+        $cashMachine = new CashMachine(10);
+        $this->assertEquals("10.00", $cashMachine->getEntry());
     }
 
     /**
@@ -28,9 +28,8 @@ final class CashMachineTest extends TestCase
      */
     public function it_can_deliver_30()
     {
-        $CashMachine = new CashMachine("30.00");
-        $CashMachine->setNotes();
-        $result = $CashMachine->withdraw();
+        $cashMachine = new CashMachine("30.00");
+        $result = $cashMachine->withdraw();
         $this->assertTrue(is_array($result));
         $this->assertEquals(["20.00", "10.00"], $result);
     }
@@ -40,9 +39,9 @@ final class CashMachineTest extends TestCase
      */
     public function it_can_deliver_80()
     {
-        $CashMachine = new CashMachine(80.00);
-        $CashMachine->setNotes();
-        $result = $CashMachine->withdraw();
+        $cashMachine = new CashMachine(80.00);
+        $cashMachine->setNotes();
+        $result = $cashMachine->withdraw();
         $this->assertTrue(is_array($result));
         $this->assertEquals([50.00, 20.00, 10.00], $result);
     }
@@ -53,7 +52,7 @@ final class CashMachineTest extends TestCase
      */
     public function it_cannot_deliver_negative_number()
     {
-        $CashMachine = new CashMachine(-130.00);
+        $cashMachine = new CashMachine(-130.00);
     }
 
     /**
@@ -62,8 +61,8 @@ final class CashMachineTest extends TestCase
      */
     public function it_cannot_deliver_with_unavailable_note()
     {
-        $CashMachine = new CashMachine(125.00);
-        $CashMachine->setNotes();
+        $cashMachine = new CashMachine(125.00);
+        $cashMachine->setNotes();
     }
 
     /**
@@ -71,9 +70,8 @@ final class CashMachineTest extends TestCase
      */
     public function it_can_deliver_empty_set()
     {
-        $CashMachine = new CashMachine();
-        $CashMachine->setNotes();
-        $result = $CashMachine->withdraw();
+        $cashMachine = new CashMachine();
+        $result = $cashMachine->setNotes()->withdraw();
         $this->assertEquals(["Empty Set"], $result);
     }
 
@@ -82,9 +80,9 @@ final class CashMachineTest extends TestCase
      */
     public function it_can_deliver_with_any_notes()
     {
-        $CashMachine = new CashMachine(10);
-        $CashMachine->setNotes(9, 1);
-        $result = $CashMachine->withdraw();
+        $cashMachine = new CashMachine(10);
+        $result = $cashMachine->setNotes(9, 1)
+            ->withdraw();
         $this->assertEquals(["9.00", "1.00"], $result);
     }
 }

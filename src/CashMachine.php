@@ -28,7 +28,7 @@ class CashMachine
     const DEFAULT_NOTES = [100.0, 50.0, 20.0, 10.0];
 
     /** @var array */
-    protected $notes;
+    protected $notes = [];
 
     /** @var int */
     protected $entry;
@@ -46,10 +46,11 @@ class CashMachine
 
     /**
      * @param float ...$notes
+     * @return $this
      * @throws NoteUnavailableException
      * @throws \InvalidArgumentException
      */
-    public function setNotes(float ...$notes): void
+    public function setNotes(float ...$notes) : CashMachine
     {
         if ($notes == null) {
             $notes = self::DEFAULT_NOTES;
@@ -62,6 +63,7 @@ class CashMachine
         rsort($notes, SORT_NUMERIC);
         $this->notes = $notes;
         $this->noteAvailableValidation($this->entry);
+        return $this;
     }
 
     /**
@@ -74,9 +76,14 @@ class CashMachine
 
     /**
      * @return array
+     * @throws NoteUnavailableException
      */
     public function withdraw(): array
     {
+        if(empty($this->notes)){
+            $this->setNotes();
+        }
+
         $set = [];
         $tempAmount = $this->entry;
         foreach ($this->notes as $note) {

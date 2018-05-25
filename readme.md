@@ -1,5 +1,5 @@
-##Cash Machine
-###The Problem
+## Cash Machine
+### The Problem
 Develop a solution that simulate the delivery of notes when a client does a withdraw in a cash machine.
 The basic requirements are the follow:
   * Always deliver the lowest number of possible notes;
@@ -9,7 +9,7 @@ The basic requirements are the follow:
   
 Available notes $ 100,00; $ 50,00; $ 20,00; $ 10,00
 
-####Example:
+#### Example:
     Entry: 30.00
     Result: [20.00, 10.00]
 
@@ -25,5 +25,5 @@ Available notes $ 100,00; $ 50,00; $ 20,00; $ 10,00
     Entry: NULL
     Result: [Empty Set]
     
-###Test the solution
+### Test the solution
 After run ```composer install``` in the program's root folder, you can run ```vendor/bin/phpunit``` to test it.
